@@ -123,6 +123,8 @@ jobs:
       - name: Build Drafter v2 site
         id: build_site
         shell: bash
+        env:
+          PYTHONPATH: ${{ github.workspace }}
         run: |
           set -euo pipefail
 
