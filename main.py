@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from bakery import assert_equal
 from drafter import *
-from fish import all_fish_list, Fish, Season
+from Fish import all_fish_list, Fish, Season
 from fish_images import fish1, fish_image_list
 
 set_website_title("Delaware Fishing Regulations")
