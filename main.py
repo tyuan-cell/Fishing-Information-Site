@@ -1,7 +1,7 @@
 from dataclasses import dataclass
 from bakery import assert_equal
 from drafter import *
-from Fish import all_fish_list, Fish, Season
+from fish import all_fish_list, Fish, Season
 from fish_images import fish1, fish_image_list
 
 set_website_title("Delaware Fishing Regulations")
@@ -62,8 +62,8 @@ def choose_from_list(state: State) -> Page:
 
     Returns:
         Page: a Drafter Page listing matching fish options and selection controls."""
-    content = [Header("Please Identify the Correct Fish"),
-               Text("Type in the Correct Fish Below:")]
+    content = [Header("Please Identify the Correct "),
+               Text("Type in the Correct  Below:")]
     for fish in state.matching_fish:
         for fish1_object in fish_image_list:
             if fish1_object.name == fish.common_names[0]:
@@ -72,7 +72,7 @@ def choose_from_list(state: State) -> Page:
                 content.append(grouped_pics)
                 break
     content.append(TextBox("chosen_name", ""))
-    content.append(Button("Select Fish", select_chosen_fish))
+    content.append(Button("Select ", select_chosen_fish))
     content.append(Button("Return Home", go_home))
     return Page(state, content)
 
@@ -147,7 +147,7 @@ def go_to_regulations(state: State) -> Page:
                 LineBreak(),
                 Text("Open Season:"),
                 Button("Season Information", season_information),
-                Button("Return to Fish Information", fish_information),
+                Button("Return to  Information", fish_information),
                 Button("New Search", go_home)])
 @route
 def season_information(state: State) -> Page:
@@ -171,7 +171,7 @@ def season_information(state: State) -> Page:
     for s in all_seasons:
         content.append(Text(s))
     content.append(Button("Return to Regulations", go_to_regulations))
-    content.append(Button("Return to Fish Information", fish_information))
+    content.append(Button("Return to  Information", fish_information))
     return Page(state, content)
 
 @route
@@ -199,9 +199,9 @@ def index(state: State) -> Page:
         state (State): the current state of the application.
 
     Returns:
-        Page: the main search Page for Delaware Fishing Regulations."""
-    content = [Header("Delaware Fishing Regulations and Information"),
-                            Text("Full Fish Name: "),
+        Page: the main search Page for Delaware ing Regulations."""
+    content = [Header("Delaware ing Regulations and Information"),
+                            Text("Full  Name: "),
                             TextBox("name_searched", state.fish_search),
                             Button("Search", fish_search_result)]
     
@@ -209,7 +209,7 @@ def index(state: State) -> Page:
         content.append(Div(Text("No fish found matching. Please type a new name.")))
     return Page(state, content)
 
-TEST_WAHOO = Fish(["Wahoo"], 0.0, 999.9, [Season("January", "1", "December", "31")])
+TEST_WAHOO = (["Wahoo"], 0.0, 999.9, [Season("January", "1", "December", "31")])
 TEST_COBIA = Fish(["Cobia"], 43.0, 999.9, [Season("June", "15", "September", "15")])
 TEST_TAUTOG = Fish(["Tautog", "Blackfish"], 16.0, 999.9, [Season("January", "1", "May", "15"),
             Season("July", "1", "December", "31")])
